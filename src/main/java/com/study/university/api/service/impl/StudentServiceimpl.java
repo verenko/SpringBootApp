@@ -42,12 +42,6 @@ public class StudentServiceimpl implements StudentService {
 
 
     @Override
-    public String getNameGroup(Groupe groupe) {
-        String nameGroup = groupe.getName();
-        return nameGroup.toString();
-    }
-
-    @Override
     public List<Student> getAll() {
         List<Student> result = studentRepository.findAll();
         log.info("IN getAll - {} student found", result.size());

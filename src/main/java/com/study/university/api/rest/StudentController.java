@@ -1,6 +1,7 @@
 package com.study.university.api.rest;
 
 
+import com.study.university.api.dto.GroupDto;
 import com.study.university.api.dto.StudentsDto;
 import com.study.university.api.dto.UserDto;
 import com.study.university.api.model.Student;
@@ -38,7 +39,10 @@ public class StudentController {
 
         StudentsDto result = StudentsDto.fromStudent(student);
 
-        result.setGroup(studentService.getNameGroup(student.getGroup()));
+
+
+        result.setGroup(GroupDto.fromGroup(student.getGroup()).getName());
+
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

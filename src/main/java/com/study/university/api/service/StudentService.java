@@ -14,7 +14,6 @@ public interface StudentService {
 
     Student findById(Long id);
 
-    String getNameGroup(Groupe groupe);
 
     //void delete(Long id);
 }

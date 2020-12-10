@@ -21,10 +21,9 @@ public class GroupDto {
 
     public static GroupDto fromGroup(Groupe group) {
         GroupDto groupeGto = new GroupDto();
-
         groupeGto.setId(group.getId());
         groupeGto.setName(group.getName());
-
         return groupeGto;
     }
+
 }
