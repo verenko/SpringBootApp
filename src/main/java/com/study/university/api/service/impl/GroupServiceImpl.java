@@ -1,14 +1,19 @@
 package com.study.university.api.service.impl;
 
-import com.study.university.api.model.Group;
+import com.study.university.api.model.Groupe;
 
 import com.study.university.api.repository.GroupRepository;
 
 import com.study.university.api.service.GroupService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
+@Slf4j
 public class GroupServiceImpl implements GroupService {
 
     private final GroupRepository groupRepository;
@@ -20,15 +25,16 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public List<Group> getAll() {
-        List<Group> result = groupRepository.findAll();
+    public List<Groupe> getAll() {
+        List<Groupe> result = groupRepository.findAll();
         return result;
     }
 
     @Override
-    public Group findById(Long id) {
-        Group result = groupRepository.findById(id).orElse(null);
-
+    public Groupe findById(Long id) {
+        Groupe result = groupRepository.findById(id).orElse(null);
+        log.info("-----------------{}",id);
+        log.info("2----------------{}",result);
         if (result == null) {
             return null;
         }

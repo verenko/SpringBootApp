@@ -1,12 +1,12 @@
 package com.study.university.api.service;
 
-import com.study.university.api.model.Group;
+import com.study.university.api.model.Groupe;
 
 import java.util.List;
 
 public interface GroupService {
 
-    List<Group> getAll();
-    Group findById(Long id);
+    List<Groupe> getAll();
+    Groupe findById(Long id);
 
 }

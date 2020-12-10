@@ -26,14 +26,14 @@ public class UserRestControllerV1 {
         this.userService = userService;
     }
 
-    @RequestMapping(method = RequestMethod.OPTIONS)
-    public HttpServletResponse handle(HttpServletResponse theHttpServletResponse) throws IOException {
-        theHttpServletResponse.addHeader("Access-Control-Allow-Headers", "origin, content-type, accept, x-requested-with");
-        theHttpServletResponse.addHeader("Access-Control-Max-Age", "60");
-        theHttpServletResponse.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        theHttpServletResponse.addHeader("Access-Control-Allow-Origin", "*");
-        return theHttpServletResponse;
-    }
+//    @RequestMapping(method = RequestMethod.OPTIONS)
+//    public HttpServletResponse handle(HttpServletResponse theHttpServletResponse) throws IOException {
+//        theHttpServletResponse.addHeader("Access-Control-Allow-Headers", "origin, content-type, accept, x-requested-with");
+//        theHttpServletResponse.addHeader("Access-Control-Max-Age", "60");
+//        theHttpServletResponse.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//        theHttpServletResponse.addHeader("Access-Control-Allow-Origin", "*");
+//        return theHttpServletResponse;
+//    }
 
 
     @GetMapping(value = "{id}")

@@ -1,10 +1,10 @@
 package com.study.university.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.study.university.api.model.Group;
+import com.study.university.api.model.Groupe;
+import com.study.university.api.model.Student;
 import lombok.Data;
 
-import java.util.Date;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GroupDto {
@@ -12,16 +12,19 @@ public class GroupDto {
     private String name;
 
 
-    public Group toGroup() {
-        Group group = new Group();
+    public Groupe toGroup() {
+        Groupe group = new Groupe();
         group.setId(id);
         group.setName(name);
         return group;
     }
 
-    public static GroupDto fromGroup(Group group) {
-        GroupDto groupDto = new GroupDto();
-        group.setName(group.getName());
-        return groupDto;
+    public static GroupDto fromGroup(Groupe group) {
+        GroupDto groupeGto = new GroupDto();
+
+        groupeGto.setId(group.getId());
+        groupeGto.setName(group.getName());
+
+        return groupeGto;
     }
 }

@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "groupe")
 @Data
-public class Group extends BaseTwoEntity  {
+public class Groupe extends BaseTwoEntity  {
     @Column(nullable = false)
     private String name;
 

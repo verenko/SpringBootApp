@@ -44,7 +44,7 @@ public class AdminRestControllerV1 {
     }
 
 
-    @RequestMapping(value = "/me")
+    @GetMapping(value = "/me")
     @ResponseBody
     public ResponseEntity<AdminUserDto> getUsernameWithToken(HttpServletRequest req) {
 
