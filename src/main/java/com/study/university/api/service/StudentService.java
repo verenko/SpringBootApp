@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface StudentService {
 
-    Student register(Student student);
+    //Student register(Student student);
 
     List<Student> getAll();
 

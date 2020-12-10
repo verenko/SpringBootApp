@@ -28,14 +28,14 @@ public class StudentServiceimpl implements StudentService {
     }
 
 
-    @Override
-    public Student register(Student student) {
-        Student registeredStudent = studentRepository.save(student);
-
-        log.info("IN register - student: {} successfully registered", registeredStudent);
-
-        return registeredStudent;
-    }
+//    @Override
+//    public Student register(Student student) {
+//        Student registeredStudent = studentRepository.save(student);
+//
+//        log.info("IN register - student: {} successfully registered", registeredStudent);
+//
+//        return registeredStudent;
+//    }
 
     @Override
     public List<Student> getAll() {
