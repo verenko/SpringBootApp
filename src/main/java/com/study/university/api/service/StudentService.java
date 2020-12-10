@@ -1,5 +1,6 @@
 package com.study.university.api.service;
 
+import com.study.university.api.model.Groupe;
 import com.study.university.api.model.Student;
 import com.study.university.api.model.User;
 
@@ -12,6 +13,8 @@ public interface StudentService {
     List<Student> getAll();
 
     Student findById(Long id);
+
+    String getNameGroup(Groupe groupe);
 
     //void delete(Long id);
 }

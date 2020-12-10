@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.study.university.api.model.Groupe;
 import com.study.university.api.model.Student;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
 
 
 @Data
+@Slf4j
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StudentsDto {
     private Long id;
@@ -16,7 +18,7 @@ public class StudentsDto {
     private String lastName;
     private String patronymicName;
     private Date dateBirthDay;
-    private Groupe group;
+    private String group;
 
     public Student toStudent(){
         Student student = new Student();
@@ -25,7 +27,7 @@ public class StudentsDto {
         student.setLastName(lastName);
         student.setPatronymicName(patronymicName);
         student.setDateBirthDay(dateBirthDay);
-        student.setGroup(group);
+        //student.setGroup(group);
 
         return student;
     }
@@ -38,7 +40,8 @@ public class StudentsDto {
         studentDto.setLastName(student.getLastName());
         studentDto.setPatronymicName(student.getPatronymicName());
         studentDto.setDateBirthDay(student.getDateBirthDay());
-       studentDto.setGroup(student.getGroup());
+
+        //studentDto.setGroup(student.getGroup());
 
         return studentDto;
     }

@@ -38,6 +38,8 @@ public class StudentController {
 
         StudentsDto result = StudentsDto.fromStudent(student);
 
+        result.setGroup(studentService.getNameGroup(student.getGroup()));
+
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 

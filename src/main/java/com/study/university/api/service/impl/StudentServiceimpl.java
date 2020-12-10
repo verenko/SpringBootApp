@@ -1,8 +1,10 @@
 package com.study.university.api.service.impl;
 
 
+import com.study.university.api.model.Groupe;
 import com.study.university.api.model.Student;
 
+import com.study.university.api.repository.GroupRepository;
 import com.study.university.api.repository.StudentRepository;
 
 import com.study.university.api.service.StudentService;
@@ -19,12 +21,13 @@ import java.util.List;
 public class StudentServiceimpl implements StudentService {
 
     private final StudentRepository studentRepository;
+    private final GroupRepository groupRepository;
 
 
     @Autowired
-    public StudentServiceimpl(StudentRepository studentRepository) {
+    public StudentServiceimpl(StudentRepository studentRepository, GroupRepository groupRepository) {
         this.studentRepository = studentRepository;
-
+        this.groupRepository = groupRepository;
     }
 
 
@@ -36,6 +39,13 @@ public class StudentServiceimpl implements StudentService {
 //
 //        return registeredStudent;
 //    }
+
+
+    @Override
+    public String getNameGroup(Groupe groupe) {
+        String nameGroup = groupe.getName();
+        return nameGroup.toString();
+    }
 
     @Override
     public List<Student> getAll() {
