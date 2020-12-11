@@ -1,7 +1,6 @@
 package com.study.university.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.study.university.api.model.Groupe;
 import com.study.university.api.model.Student;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +26,6 @@ public class StudentsDto {
         student.setLastName(lastName);
         student.setPatronymicName(patronymicName);
         student.setDateBirthDay(dateBirthDay);
-        //student.setGroup(group);
 
         return student;
     }
@@ -40,6 +38,7 @@ public class StudentsDto {
         studentDto.setLastName(student.getLastName());
         studentDto.setPatronymicName(student.getPatronymicName());
         studentDto.setDateBirthDay(student.getDateBirthDay());
+
 
         //studentDto.setGroup(student.getGroup());
 

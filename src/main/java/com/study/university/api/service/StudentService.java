@@ -1,8 +1,6 @@
 package com.study.university.api.service;
 
-import com.study.university.api.model.Groupe;
 import com.study.university.api.model.Student;
-import com.study.university.api.model.User;
 
 import java.util.List;
 

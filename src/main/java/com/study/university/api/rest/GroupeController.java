@@ -1,7 +1,7 @@
 package com.study.university.api.rest;
 
 
-import com.study.university.api.dto.GroupDto;
+import com.study.university.api.dto.GroupeDto;
 import com.study.university.api.model.Groupe;
 import com.study.university.api.service.GroupService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,16 +22,16 @@ public class GroupeController {
     }
 
     @GetMapping(value = "{id}")
-    public ResponseEntity<GroupDto> getStudentById(@PathVariable(name = "id") Long id){
+    public ResponseEntity<GroupeDto> getStudentById(@PathVariable(name = "id") Long id){
 
         Groupe group = groupService.findById(id);
-        log.info("-----------------------33{}",group);
+
         if(group == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        GroupDto result = GroupDto.fromGroup(group);
-        log.info("-----------------------333344443{}",result);
+        GroupeDto result = GroupeDto.fromGroup(group);
+
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

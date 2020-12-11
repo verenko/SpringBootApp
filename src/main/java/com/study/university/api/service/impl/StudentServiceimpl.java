@@ -1,7 +1,6 @@
 package com.study.university.api.service.impl;
 
 
-import com.study.university.api.model.Groupe;
 import com.study.university.api.model.Student;
 
 import com.study.university.api.repository.GroupRepository;
@@ -53,11 +52,11 @@ public class StudentServiceimpl implements StudentService {
         Student result = studentRepository.findById(id).orElse(null);
 
         if (result == null) {
-            log.warn("IN findById - no student found by id: {}", id);
+           // log.warn("IN findById - no student found by id: {}", id);
             return null;
         }
 
-        log.info("IN findById - student: {} found by id: {}", result);
+        //log.info("IN findById - student: {} found by id: {}", result);
         return result;
     }
 

@@ -1,9 +1,8 @@
 package com.study.university.api.rest;
 
 
-import com.study.university.api.dto.GroupDto;
+import com.study.university.api.dto.GroupeDto;
 import com.study.university.api.dto.StudentsDto;
-import com.study.university.api.dto.UserDto;
 import com.study.university.api.model.Student;
 
 import com.study.university.api.service.StudentService;
@@ -23,11 +22,17 @@ import org.springframework.web.bind.annotation.*;
 public class StudentController {
 
     private final StudentService studentService;
-
     @Autowired
     public StudentController(StudentService studentService) {
+
         this.studentService = studentService;
     }
+
+
+
+
+
+
 
     @GetMapping(value = "{id}")
     public ResponseEntity<StudentsDto> getStudentById(@PathVariable(name = "id") Long id){
@@ -39,11 +44,10 @@ public class StudentController {
 
         StudentsDto result = StudentsDto.fromStudent(student);
 
+        result.setGroup(GroupeDto.fromGroup(student.getGroup()).getName());
 
-
-        result.setGroup(GroupDto.fromGroup(student.getGroup()).getName());
-
-
+        log.info("----------------1--{}",student);
+        log.info("----------------2--{}",result);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 

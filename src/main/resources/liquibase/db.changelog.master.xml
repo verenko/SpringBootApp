@@ -110,7 +110,7 @@
     </changeSet>
 
     <changeSet id="1.0.6" author="verenko">
-        <createTable tableName="students">
+        <createTable tableName="student">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -131,6 +131,10 @@
                 <constraints nullable="true"/>
             </column>
 
+            <column name="groupe_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
 
             <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
                 <constraints nullable="false"/>
@@ -140,12 +144,12 @@
                 <constraints nullable="false"/>
             </column>
 
-
         </createTable>
     </changeSet>
 
+
     <changeSet id="1.0.7" author="verenko">
-        <createTable tableName="group">
+        <createTable tableName="groups_university">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -154,6 +158,10 @@
                 <constraints nullable="false" unique="true"/>
             </column>
 
+            <column name="main_person" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+
             <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
                 <constraints nullable="false"/>
             </column>
@@ -163,11 +171,22 @@
             </column>
         </createTable>
     </changeSet>
+
+
     <changeSet id="1.0.8" author="verenko">
-        <createTable tableName="student_to_group">
-            <column name="group_id" type="BIGINT">
-            </column>
-            <column name="student_id" type="BIGINT"/>
-        </createTable>
+        <addForeignKeyConstraint baseColumnNames="groupe_id"
+                                 baseTableName="student"
+                                 constraintName="fk_groupe_student_groupe"
+                                 referencedColumnNames="id"
+                                 referencedTableName="groups_university"/>
     </changeSet>
+
+    <changeSet id="1.0.9" author="verenko">
+        <addForeignKeyConstraint baseColumnNames="main_person"
+                                 baseTableName="groups_university"
+                                 constraintName="fk_groupe_student_student"
+                                 referencedColumnNames="id"
+                                 referencedTableName="student"/>
+    </changeSet>
+
 </databaseChangeLog>

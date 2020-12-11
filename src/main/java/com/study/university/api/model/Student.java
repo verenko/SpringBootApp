@@ -4,13 +4,12 @@ package com.study.university.api.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "students")
+@Table(name = "student")
 @Data
-public class Student extends BaseTwoEntity implements Serializable {
+public class Student extends BaseTwoEntity {
     @Column(nullable = false)
     private String fistName;
     @Column(nullable = false)
@@ -20,11 +19,10 @@ public class Student extends BaseTwoEntity implements Serializable {
     @Column(nullable = false)
     private Date dateBirthDay;
 
-
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "group_id", nullable = false)
+    @JoinColumn(name = "groupe_id", nullable = true)
     private Groupe group;
+
 
 
 }
