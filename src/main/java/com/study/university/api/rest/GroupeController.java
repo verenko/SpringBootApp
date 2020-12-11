@@ -32,6 +32,8 @@ public class GroupeController {
 
         GroupeDto result = GroupeDto.fromGroup(group);
 
+        result.setStudentName(group.getStudent().getFirstName() +" "+ group.getStudent().getLastName());
+
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

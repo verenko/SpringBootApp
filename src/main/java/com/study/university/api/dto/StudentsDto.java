@@ -22,7 +22,7 @@ public class StudentsDto {
     public Student toStudent(){
         Student student = new Student();
         student.setId(id);
-        student.setFistName(firstName);
+        student.setFirstName(firstName);
         student.setLastName(lastName);
         student.setPatronymicName(patronymicName);
         student.setDateBirthDay(dateBirthDay);
@@ -34,7 +34,7 @@ public class StudentsDto {
         StudentsDto studentDto = new StudentsDto();
 
         studentDto.setId(student.getId());
-        studentDto.setFirstName(student.getFistName());
+        studentDto.setFirstName(student.getFirstName());
         studentDto.setLastName(student.getLastName());
         studentDto.setPatronymicName(student.getPatronymicName());
         studentDto.setDateBirthDay(student.getDateBirthDay());

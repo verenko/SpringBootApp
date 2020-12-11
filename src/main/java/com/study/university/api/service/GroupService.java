@@ -8,5 +8,6 @@ public interface GroupService {
 
     List<Groupe> getAll();
     Groupe findById(Long id);
+    Groupe findByName(String name);
 
 }

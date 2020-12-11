@@ -1,6 +1,8 @@
 package com.study.university.api.service.impl;
 
 
+import com.study.university.api.dto.StudentsDto;
+import com.study.university.api.model.Groupe;
 import com.study.university.api.model.Student;
 
 import com.study.university.api.repository.GroupRepository;
@@ -30,15 +32,30 @@ public class StudentServiceimpl implements StudentService {
     }
 
 
-//    @Override
-//    public Student register(Student student) {
-//        Student registeredStudent = studentRepository.save(student);
-//
-//        log.info("IN register - student: {} successfully registered", registeredStudent);
-//
-//        return registeredStudent;
-//    }
 
+    @Override
+    public Student save(StudentsDto studentDto){
+        Student student = new Student();
+
+        student = studentDto.toStudent();
+//        student.setFirstName(studentDto.getFirstName());
+//        student.setLastName(studentDto.getLastName());
+//        student.setPatronymicName(studentDto.getPatronymicName());
+//        student.setDateBirthDay(studentDto.getDateBirthDay());
+//        student.setPatronymicName(studentDto.getPatronymicName());
+        if (!studentDto.getGroup().isEmpty()){
+            Groupe groupe = groupRepository.findByName(studentDto.getGroup());
+            if (groupe != null){
+                student.setGroup(groupe);
+            }
+            else {
+                student.setGroup(null);
+            }
+        }
+
+        log.info("-----------------------------3-----------{}",student);
+       return studentRepository.save(student);
+    }
 
     @Override
     public List<Student> getAll() {

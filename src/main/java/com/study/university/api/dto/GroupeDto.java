@@ -10,7 +10,7 @@ import lombok.Data;
 public class GroupeDto {
     private Long id;
     private String name;
-    private Student student;
+    private String studentName;
 
 
 
@@ -18,7 +18,6 @@ public class GroupeDto {
         Groupe group = new Groupe();
         group.setId(id);
         group.setName(name);
-        group.setStudent(student);
         return group;
     }
 
@@ -26,7 +25,6 @@ public class GroupeDto {
         GroupeDto groupeGto = new GroupeDto();
         groupeGto.setId(group.getId());
         groupeGto.setName(group.getName());
-        groupeGto.setStudent(group.getStudent());
         return groupeGto;
     }
 

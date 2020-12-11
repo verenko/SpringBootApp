@@ -1,6 +1,7 @@
 package com.study.university.api.model;
 
 
+import com.sun.istack.Nullable;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.util.Date;
 @Data
 public class Student extends BaseTwoEntity {
     @Column(nullable = false)
-    private String fistName;
+    private String firstName;
     @Column(nullable = false)
     private String lastName;
     @Column(nullable = false)
@@ -19,6 +20,7 @@ public class Student extends BaseTwoEntity {
     @Column(nullable = false)
     private Date dateBirthDay;
 
+    @Nullable
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "groupe_id", nullable = true)
     private Groupe group;

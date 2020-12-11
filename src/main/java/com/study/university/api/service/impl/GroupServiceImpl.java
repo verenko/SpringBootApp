@@ -2,6 +2,7 @@ package com.study.university.api.service.impl;
 
 import com.study.university.api.model.Groupe;
 
+import com.study.university.api.model.User;
 import com.study.university.api.repository.GroupRepository;
 
 import com.study.university.api.service.GroupService;
@@ -39,6 +40,13 @@ public class GroupServiceImpl implements GroupService {
             return null;
         }
         return result;
+    }
+
+    @Override
+    public Groupe findByName(String name) {
+        Groupe groupe = groupRepository.findByName(name);
+        log.info("IN findByUsername - user: {} found by username: {}", groupe, name);
+        return groupe;
     }
 
 }
