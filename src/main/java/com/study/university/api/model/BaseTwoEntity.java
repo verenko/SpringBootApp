@@ -24,10 +24,10 @@ public class BaseTwoEntity {
     private Long id;
 
     @CreatedDate
-    @Column(name = "created", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "created", nullable = true,columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date created;
 
     @LastModifiedDate
-    @Column(name = "updated", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "updated", nullable = true,columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date updated;
 }

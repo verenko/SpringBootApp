@@ -1,6 +1,9 @@
 package com.study.university.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.study.university.api.model.Groupe;
 import com.study.university.api.model.Student;
 import lombok.Data;
@@ -12,6 +15,8 @@ public class GroupeDto {
     private String name;
     private String studentName;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Long studentId;
 
 
     public Groupe toGroup() {
@@ -25,6 +30,7 @@ public class GroupeDto {
         GroupeDto groupeGto = new GroupeDto();
         groupeGto.setId(group.getId());
         groupeGto.setName(group.getName());
+
         return groupeGto;
     }
 

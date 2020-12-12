@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping(value = "/api/v1/groupe/")
+@RequestMapping(value = "/api/v1/")
 @Slf4j
 public class GroupeController {
 
@@ -21,7 +21,7 @@ public class GroupeController {
         this.groupService = groupService;
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "groupe/{id}")
     public ResponseEntity<GroupeDto> getStudentById(@PathVariable(name = "id") Long id){
 
         Groupe group = groupService.findById(id);
@@ -35,5 +35,10 @@ public class GroupeController {
         result.setStudentName(group.getStudent().getFirstName() +" "+ group.getStudent().getLastName());
 
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+    @PostMapping("groupe")
+    public Groupe createStudent(@RequestBody GroupeDto groupeDto) {
+
+        return groupService.save(groupeDto);
     }
 }

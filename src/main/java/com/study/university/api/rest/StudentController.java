@@ -13,11 +13,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping(value = "/api/v1/")
+@RequestMapping(value = "/api/v1/students/")
 @Slf4j
 public class StudentController {
 
@@ -32,23 +33,27 @@ public class StudentController {
 
 
 
+    @GetMapping()
+    public List<StudentsDto> getStudentAll(@RequestParam(defaultValue = "1") Integer pageNumber,
+                                           @RequestParam(defaultValue = "10") Integer pageSize){
+
+        return studentService.getAll(pageNumber,pageSize);
+    }
 
 
-    @GetMapping(value = "students/{id}")
+    @GetMapping(value = "{id}")
     public ResponseEntity<StudentsDto> getStudentById(@PathVariable(name = "id") Long id){
         Student student = studentService.findById(id);
         if(student == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         StudentsDto result = StudentsDto.fromStudent(student);
-        result.setGroup(GroupeDto.fromGroup(student.getGroup()).getName());
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @PostMapping("/students")
-    public Student createStudent(@RequestBody StudentsDto studentsDto) {
+    @PostMapping()
+    public StudentsDto createStudent(@RequestBody StudentsDto studentsDto) {
 
-        log.info("1111111111111111----{}",studentsDto);
         return studentService.save(studentsDto);
     }
 

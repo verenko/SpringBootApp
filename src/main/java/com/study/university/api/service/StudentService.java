@@ -9,11 +9,11 @@ public interface StudentService {
 
     //Student register(Student student);
 
-    List<Student> getAll();
+    List<StudentsDto> getAll(Integer pageNumber, Integer pageSize);
 
     Student findById(Long id);
 
-    Student save(StudentsDto student);
+    StudentsDto save(StudentsDto student);
 
 
 

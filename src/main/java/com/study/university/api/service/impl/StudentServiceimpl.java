@@ -1,6 +1,7 @@
 package com.study.university.api.service.impl;
 
 
+import com.google.common.collect.Lists;
 import com.study.university.api.dto.StudentsDto;
 import com.study.university.api.model.Groupe;
 import com.study.university.api.model.Student;
@@ -13,9 +14,13 @@ import com.study.university.api.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -32,48 +37,52 @@ public class StudentServiceimpl implements StudentService {
     }
 
 
-
     @Override
-    public Student save(StudentsDto studentDto){
+    public StudentsDto save(StudentsDto studentDto) {
         Student student = new Student();
 
         student = studentDto.toStudent();
-//        student.setFirstName(studentDto.getFirstName());
-//        student.setLastName(studentDto.getLastName());
-//        student.setPatronymicName(studentDto.getPatronymicName());
-//        student.setDateBirthDay(studentDto.getDateBirthDay());
-//        student.setPatronymicName(studentDto.getPatronymicName());
-        if (!studentDto.getGroup().isEmpty()){
+
+
+        if (studentDto.getGroup() != null) {
             Groupe groupe = groupRepository.findByName(studentDto.getGroup());
-            if (groupe != null){
+            if (groupe != null) {
                 student.setGroup(groupe);
             }
-            else {
-                student.setGroup(null);
-            }
         }
+        student.setCreated(new Date());
+        student.setUpdated(new Date());
+        studentRepository.save(student);
 
-        log.info("-----------------------------3-----------{}",student);
-       return studentRepository.save(student);
+
+        return StudentsDto.fromStudent(student);
     }
 
     @Override
-    public List<Student> getAll() {
-        List<Student> result = studentRepository.findAll();
-        log.info("IN getAll - {} student found", result.size());
-        return result;
+    public List<StudentsDto> getAll(Integer pageNumber, Integer pageSize) {
+
+        log.info("pageNumber-{}::::pageSize{}",pageNumber,pageSize);
+        Pageable paging = PageRequest.of(pageNumber-1, pageSize, Sort.by("id").descending());
+
+        Page<Student> result = studentRepository.findAll(paging);
+        List<StudentsDto> studentsDto = new ArrayList<StudentsDto>();
+
+        List<Student> students = result.getContent();
+        students.forEach(
+                x -> studentsDto.add(StudentsDto.fromStudent(x))
+        );
+        return studentsDto;
     }
+
 
     @Override
     public Student findById(Long id) {
         Student result = studentRepository.findById(id).orElse(null);
 
         if (result == null) {
-           // log.warn("IN findById - no student found by id: {}", id);
             return null;
         }
 
-        //log.info("IN findById - student: {} found by id: {}", result);
         return result;
     }
 

@@ -115,7 +115,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="fist_name" type="VARCHAR(100)">
+            <column name="first_name" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
 
@@ -132,16 +132,16 @@
             </column>
 
             <column name="groupe_id" type="BIGINT">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
 
             <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
         </createTable>
@@ -163,11 +163,11 @@
             </column>
 
             <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
     </changeSet>
