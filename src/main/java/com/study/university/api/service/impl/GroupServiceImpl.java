@@ -10,8 +10,13 @@ import com.study.university.api.service.GroupService;
 import com.study.university.api.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,11 +35,6 @@ public class GroupServiceImpl implements GroupService {
         this.studentService = studentService;
     }
 
-    @Override
-    public List<Groupe> getAll() {
-        List<Groupe> result = groupRepository.findAll();
-        return result;
-    }
 
 
     @Override
@@ -45,6 +45,42 @@ public class GroupServiceImpl implements GroupService {
         }
         return result;
     }
+
+    @Override
+    public List<GroupeDto> getAll(Integer pageNumber, Integer pageSize) {
+
+
+        Pageable paging = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id").descending());
+
+
+        Page<Groupe> result = groupRepository.findAll(paging);
+        List<GroupeDto> groupeDto = new ArrayList<GroupeDto>();
+
+        List<Groupe> groupe = result.getContent();
+
+
+
+
+
+
+        groupe.forEach(
+                x -> {
+                    GroupeDto groupTemp = GroupeDto.fromGroup(x);
+                    groupTemp.setCountStudent(studentService.findStudentsByGroup(x).size());
+                    if (x.getStudent() != null){
+                        groupTemp.setStudentName(x.getStudent().getFirstName() +" "+ x.getStudent().getLastName());
+                    }
+                    groupeDto.add(groupTemp);
+                }
+        );
+        return groupeDto;
+    }
+
+    @Override
+    public int countAllGroup() {
+        return groupRepository.findAll().size();
+    }
+
 
     @Override
     public Groupe findByIdGroup(Long id) {
@@ -89,5 +125,6 @@ public class GroupServiceImpl implements GroupService {
 
         return groupRepository.save(groupe);
     }
+
 
 }

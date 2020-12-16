@@ -135,6 +135,13 @@
                 <constraints nullable="true"/>
             </column>
 
+            <column name="is_active" type="TINYINT" defaultValue="1">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="record_number" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
 
             <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
                 <constraints nullable="true"/>
@@ -188,5 +195,92 @@
                                  referencedColumnNames="id"
                                  referencedTableName="student"/>
     </changeSet>
+
+
+    <changeSet id="1.0.10" author="verenko">
+        <createTable tableName="teacher">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="first_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="patronymic_name" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="degree" type="VARCHAR(100)" defaultValue="Асистент">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="phone_number" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.11" author="verenko">
+        <createTable tableName="score">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="value" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+
+            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.12" author="verenko">
+        <createTable tableName="subject">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
 
 </databaseChangeLog>

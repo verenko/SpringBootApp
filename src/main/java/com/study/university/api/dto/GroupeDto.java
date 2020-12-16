@@ -15,6 +15,9 @@ public class GroupeDto {
     private String name;
     private String studentName;
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private int countStudent;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long studentId;
 
@@ -27,11 +30,10 @@ public class GroupeDto {
     }
 
     public static GroupeDto fromGroup(Groupe group) {
-        GroupeDto groupeGto = new GroupeDto();
-        groupeGto.setId(group.getId());
-        groupeGto.setName(group.getName());
-
-        return groupeGto;
+        GroupeDto groupeDto = new GroupeDto();
+        groupeDto.setId(group.getId());
+        groupeDto.setName(group.getName());
+        return groupeDto;
     }
 
 }

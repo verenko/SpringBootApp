@@ -58,11 +58,17 @@ public class StudentServiceimpl implements StudentService {
         return StudentsDto.fromStudent(student);
     }
 
+
+    @Override
+    public List<Student> findStudentsByGroup(Groupe groupe) {
+        return studentRepository.findStudentsByGroup(groupe);
+    }
+
     @Override
     public List<StudentsDto> getAll(Integer pageNumber, Integer pageSize) {
 
-        log.info("pageNumber-{}::::pageSize{}",pageNumber,pageSize);
-        Pageable paging = PageRequest.of(pageNumber-1, pageSize, Sort.by("id").descending());
+        log.info("pageNumber-{}::::pageSize{}", pageNumber, pageSize);
+        Pageable paging = PageRequest.of(pageNumber - 1, pageSize, Sort.by("id").descending());
 
         Page<Student> result = studentRepository.findAll(paging);
         List<StudentsDto> studentsDto = new ArrayList<StudentsDto>();

@@ -1,15 +1,15 @@
 package com.study.university.api.service;
 
 import com.study.university.api.dto.GroupeDto;
-import com.study.university.api.dto.StudentsDto;
 import com.study.university.api.model.Groupe;
-import com.study.university.api.model.Student;
 
 import java.util.List;
 
 public interface GroupService {
 
-    List<Groupe> getAll();
+    List<GroupeDto> getAll(Integer pageNumber, Integer pageSize);
+
+    int countAllGroup();
 
     Groupe findById(Long id);
 
@@ -18,5 +18,6 @@ public interface GroupService {
     Groupe findByName(String name);
 
     Groupe save(GroupeDto groupe);
+
 
 }

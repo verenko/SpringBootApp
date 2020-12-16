@@ -19,11 +19,14 @@ public class Student extends BaseTwoEntity {
     private String patronymicName;
     @Column(nullable = false)
     private Date dateBirthDay;
+    @Column(nullable = false)
+    private String recordNumber;
+
+    private int isActive;
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "groupe_id", nullable = true)
     private Groupe group;
-
-
 
 }

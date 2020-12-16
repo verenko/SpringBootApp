@@ -29,10 +29,6 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-
-
-
-
     @GetMapping()
     public List<StudentsDto> getStudentAll(@RequestParam(defaultValue = "1") Integer pageNumber,
                                            @RequestParam(defaultValue = "10") Integer pageSize){
